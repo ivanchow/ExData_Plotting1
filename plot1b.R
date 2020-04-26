@@ -8,7 +8,7 @@ plot1b <- function()
   #ecdfList <- list()
   oneLine <- readLines(con, n = 1, warn = FALSE)
   n <- strsplit(oneLine, ";")
-  dl <- list()
+  dl <- list() 
   i <- 1
   st <- strptime("01/02/2007", format = "%d/%m/%y") #2007-02-01
   et <- strptime("02/02/2007", format = "%d/%m/%y") #2007-02-02

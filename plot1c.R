@@ -16,6 +16,7 @@ plot1c <- function()
   # add timestamp column
   df$timestamp <- paste(df$Date, df$Time)
   
+  
   df
   
 }

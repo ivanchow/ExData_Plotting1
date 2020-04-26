@@ -40,5 +40,6 @@ plot2 <- function()
   #turn off the graphic device
   dev.off()
   
+  
   head(df)
 }
