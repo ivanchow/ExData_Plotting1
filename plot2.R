@@ -26,7 +26,7 @@ plot2 <- function()
   #convert the data into double data type
   df$Global_active_power <- as.double(as.character(df$Global_active_power))
   
-  df$timestamp = paste(df$Date, df$Time)
+  df$timestamp <- paste(df$Date, df$Time)
 
   # for testing on the screen
   ggplot(df, aes(x=timestamp, y=Global_active_power, group=1), ylab = "Global Active Power (kilowatts)") + geom_line() 
@@ -39,7 +39,6 @@ plot2 <- function()
   
   #turn off the graphic device
   dev.off()
-  
   
   head(df)
 }
