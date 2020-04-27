@@ -2,7 +2,7 @@
 #  as week1 assignment for Exploratory Data Analysis 
 #  based on weekdays
 #  
-plot2 <- function()
+plot3 <- function()
 {
   # Read the content file from the zip file downloaded from the website
   # https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip
@@ -20,23 +20,28 @@ plot2 <- function()
   df$Date <- strptime(df$Date,format = "%d/%m/%Y")
   df <- subset(df, df$Date <= et & df$Date >= st)
   
-  #filter out the bad data
-  df <- subset(df, df$Global_active_power != '?')
-  
   #convert the data into double data type
-  df$Global_active_power <- as.double(as.character(df$Global_active_power))
+  df$Sub_metering_3 <- as.double(as.character(df$Sub_metering_3))
+  df$Sub_metering_2 <- as.double(as.character(df$Sub_metering_2))
+  df$Sub_metering_1 <- as.double(as.character(df$Sub_metering_1))
   
   df$timestamp <- paste(df$Date, df$Time)
 
   # for testing on the screen
-  g <- ggplot(df, aes(x=timestamp, y=Global_active_power, group=1), ylab = "Global Active Power (kilowatts)") + geom_line()
+  g <- ggplot(df, aes(x=timestamp))
+  g <- g + geom_line(aes(y=Sub_metering_1, col="grey", group=1))
+  g <- g + geom_line(aes(y=Sub_metering_2, col="blue", group=1))
+  g <- g + geom_line(aes(y=Sub_metering_3, col="red", group=1))
   g
 
   # set the png format
-  png(filename = "plot2.png", width = 480, height = 480)
+  png(filename = "plot3.png", width = 480, height = 480)
   
   # plot the histogram into the graph
-  g <- ggplot(df, aes(x=timestamp, y=Global_active_power, group=1), ylab = "Global Active Power (kilowatts)") + geom_line()
+  g <- ggplot(df, aes(x=timestamp))
+  g <- g + geom_line(aes(y=Sub_metering_1, col="grey", group=1))
+  g <- g + geom_line(aes(y=Sub_metering_2, col="blue", group=1))
+  g <- g + geom_line(aes(y=Sub_metering_3, col="red", group=1))
   g
   
   #turn off the graphic device
